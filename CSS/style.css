@@ -1,0 +1,19 @@
+body {
+  font-family: "Prompt", sans-serif;
+}
+
+.form-control:focus,
+.form-select:focus {
+  box-shadow: none;
+  border-color: blueviolet !important; 
+}
+ 
+fa-trash-can:hover, fa-pen-to-square:hover
+{
+  animation: fa-shake 2s 1 linear;
+}
+.img-container
+{
+  height: 150px;
+  overflow: hidden;
+}

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CRUD</title>
+    <!-- ^=======> Google Fonts Links -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet" />
+    <!-- ^=======> Bootstrap Style Sheet -->
+    <link rel="stylesheet" href="./CSS/bootstrap.min.css" />
+    <!-- ^=======> Bootstrap Icos -->
+    <link rel="stylesheet" href="./CSS/bootstrap-icons.css" />
+    <!-- ^=======> Font awesome library -->
+    <link rel="stylesheet" href="./CSS/all.min.css" />
+    <!-- ^=======> Main Style sheet -->
+    <link rel="stylesheet" href="./CSS/style.css" />
+</head>
+
+<body>
+    <div class="w-75 mx-auto py-5">
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control border-0 border-bottom rounded-0" id="productName" placeholder="name@example.com">
+            <label for="productName ">Product Name</label>
+        </div> 
+        <div class="form-floating mb-3">
+            <input type="number" class="form-control border-0 border-bottom rounded-0" id="ProductPrice" placeholder="name@example.com">
+            <label for="ProductPrice ">Product Price</label>
+        </div>
+
+        <div class="form-floating">
+            <select class="form-select border-0 border-bottom rounded-0" id="ProductCategory" aria-label="Floating label select example">
+              <option selected disabled hidden >Choose Product Category </option>
+              <option value="1">Mobile Phone</option>
+              <option value="2">Laptop</option>
+              <option value="3">Camera</option>
+              <option value="4">Printer</option>
+              <option value="5">TV</option>
+ 
+            </select>
+            <label for="ProductCategory">Product Category</label>
+         </div>
+
+         <div class="form-floating mb-3 mt-2">
+            <textarea class="form-control border-0 border-bottom rounded-0" id="ProductDescription" placeholder="name@example.com"></textarea>
+            <label for="ProductDescription ">Product Description</label>
+        </div>
+
+        <div class="form-floating mb-3">
+            <input type="file" class="form-control border-0 border-bottom rounded-0" id="ProductImage" placeholder="name@example.com">
+            <label for="ProductImage ">Product Image</label>
+        </div>
+        <button onclick="addProduct()" type="button" class = "btn btn-info my-2 text-light">Add Product </button>
+    </div>
+
+<div class="container">
+    <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
+        <div class="col"> 
+            <div class="border shadow-sm p-2">
+              <div class="img-container">
+                <img class="w-100 h-100 object-fit-contain" src="./Images/fbd191fb271c9b20c200c073e073501d.jpg" alt="">
+              </div>
+                <h3 class="fs-5">Lorem, ipsum dolor.</h3>
+                <p class="fs-6 text-secondary">Lorem ipsum dolor sit amet.</p>
+                <p><span class="fw-semibold">Category</span> mobile Phone</p>
+                <div class="d-flex justify-content-between pe-3">
+                    <p class="fw-semibold">1500 </p>
+                   <div>
+                    <i class="fa-solid fa-trash-can fs-6 text-danger"></i>
+                    <i class="fa-solid fa-pen-to-square fs-6 text-success"></i>
+                   </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+    <script src="./JS/bootstrap.bundle.min.js"></script>
+    <!-- ^=======> Font awesome library -->
+    <script src="https://kit.fontawesome.com/ce3048c406.js" crossorigin="anonymous"></script>
+    <script src="./JS/index.js"></script>
+</body>
+
+</html>
