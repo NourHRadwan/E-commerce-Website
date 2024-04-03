@@ -23,6 +23,9 @@
 </head>
 
 <body>
+    <div class="logo">
+        <img src="./Images/logo-shoply-white_png by Stefan Kuhl.jpeg" class="img-fluid rounded mx-auto d-block w-25" alt="...">
+    </div>
     <div class="w-75 mx-auto py-5">
         <div class="form-floating mb-3">
             <input type="text" class="form-control border-0 border-bottom rounded-0" id="productName" placeholder="name@example.com">
@@ -36,11 +39,11 @@
         <div class="form-floating">
             <select class="form-select border-0 border-bottom rounded-0" id="ProductCategory" aria-label="Floating label select example">
               <option selected disabled hidden >Choose Product Category </option>
-              <option value="1">Mobile Phone</option>
-              <option value="2">Laptop</option>
-              <option value="3">Camera</option>
-              <option value="4">Printer</option>
-              <option value="5">TV</option>
+              <option value="Mobile Phone">Mobile Phone</option>
+              <option value="Laptop">Laptop</option>
+              <option value="Camera">Camera</option>
+              <option value="Printer">Printer</option>
+              <option value="TV">TV</option>
  
             </select>
             <label for="ProductCategory">Product Category</label>
@@ -59,11 +62,11 @@
     </div>
 
 <div class="container">
-    <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
+    <div id="productsContainerElement" class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
         <div class="col"> 
             <div class="border shadow-sm p-2">
-              <div class="img-container">
-                <img class="w-100 h-100 object-fit-contain" src="./Images/fbd191fb271c9b20c200c073e073501d.jpg" alt="">
+              <div class="img-container mb-5">
+                <img class="w-100 h-100 object-fit-contain" src="./Images/Apple iPhone 13.jpg" alt="">
               </div>
                 <h3 class="fs-5">Lorem, ipsum dolor.</h3>
                 <p class="fs-6 text-secondary">Lorem ipsum dolor sit amet.</p>
