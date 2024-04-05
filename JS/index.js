@@ -5,8 +5,23 @@ var productDescriptionInput = document.getElementById("ProductDescription");
 var productImageInput = document.getElementById("ProductImage");
 
 var productsContainerElement = document.getElementById("productsContainerElement")
+var productList;
 
-var productList = [ ];
+// First Time user
+if (localStorage.getItem("Products")  === null) {   
+    productList = [ ];
+}
+else   // The user is not a first time user, so we retrieve
+{
+    productList = localStorage.getItem("Products");
+    productList= JSON.parse(productList);
+    displayProducts();
+}
+
+
+function addToLocalStore() {
+    localStorage.setItem("Products", JSON.stringify(productList));
+}
 
 function addProduct(){
     var product = {
@@ -17,22 +32,24 @@ function addProduct(){
         productImage : productImageInput.files[0].name,
     }
     productList.push(product);
-    displayProduts();
+    displayProducts();
+    addToLocalStore();
+    //reset the form fields 
     restProductInputs();
 }
 
 console.log(productList)
 
 function restProductInputs(){
-     productNameInput.value = '';
-     productPriceInput.value = '';
-     productCategoryInput.value = 'choose product category'; // Set a default value or choose the appropriate default option value
-     productDescriptionInput.value = '';
+     productNameInput.value = null;
+     productPriceInput.value = null;
+     productCategoryInput.value = null; 
+     productDescriptionInput.value = null;
      productImageInput.value = null;
  }
 
 
- function displayProduts()
+ function displayProducts()
  {
     var containerElement = ` `;
     for(var i = 0; i < productList.length; i++)
