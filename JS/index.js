@@ -65,7 +65,7 @@ function restProductInputs(){
                                     <div class="d-flex justify-content-between pe-3">
                                         <p class="fw-semibold">${productList[i].productPrice}</p>
                                     <div>
-                                        <i class="fa-solid fa-trash-can fs-6 text-danger"></i>
+                                        <i onclick = "deletProducts(${i})" class="fa-solid fa-trash-can fs-6 text-danger"></i>
                                         <i class="fa-solid fa-pen-to-square fs-6 text-success"></i>
                                     </div>
                                         </div>
@@ -74,4 +74,12 @@ function restProductInputs(){
     }
     productsContainerElement.innerHTML = containerElement;
  }
- displayProduts();
+
+
+function deletProducts(indexToDelete){
+    productList.splice(indexToDelete,1); 
+    console.log(productList);
+    addToLocalStore();
+    displayProducts();
+}
+

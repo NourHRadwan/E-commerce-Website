@@ -8,8 +8,8 @@ body {
   border-color: blueviolet !important; 
 }
  
-fa-trash-can:hover, fa-pen-to-square:hover
-{
+.fa-trash-can:hover,
+.fa-pen-to-square:hover {
   animation: fa-shake 2s 1 linear;
 }
 .img-container
