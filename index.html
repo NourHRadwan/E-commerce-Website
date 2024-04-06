@@ -63,7 +63,7 @@
 
 
 <div class="container">
-    <input type = "search" class="my-3 border border-2 form-control" placeholder="Search By Product Name" />
+    <input oninput="searchForProduct(this.value);" type="search" class="my-3 border border-2 form-control" placeholder="Search By Product Name" />
 
     <div id="productsContainerElement" class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
         <!--Products Display using Javascript-->
