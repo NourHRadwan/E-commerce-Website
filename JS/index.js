@@ -14,6 +14,7 @@ var productList;
 
 var updateProductIndex; //  to keep track of which product is being updated
 
+
 // First Time user
 if (localStorage.getItem("Products") === null) {
     productList = [];
@@ -136,4 +137,21 @@ function updateProduct(){
     // Switching back to the Add button after updating
     addProductBtn.classList.replace("d-none", "d-block");
     updateProductBtn.classList.replace("d-block", "d-none");
+}
+
+// Function to validate the product name
+function isValidProductName()
+{
+    var ProductNameRegex = /^[A-Z].+$/; //Name should start with capital letter
+    //Check if name match the pattern
+    if(ProductNameRegex.test(productNameInput.value) == true)
+    {
+        productNameInput.classList.add("is-valid");
+        productNameInput.classList.remove("is-invalid");
+    }
+    else
+    {
+        productNameInput.classList.add("is-invalid");
+        productNameInput.classList.remove("is-valid");
+    }
 }

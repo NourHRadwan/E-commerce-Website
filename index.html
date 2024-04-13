@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,8 +9,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-        href="https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
-        rel="stylesheet" />
+      href="https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
     <!-- ^=======> Bootstrap Style Sheet -->
     <link rel="stylesheet" href="./CSS/bootstrap.min.css" />
     <!-- ^=======> Bootstrap Icos -->
@@ -20,62 +20,111 @@
     <link rel="stylesheet" href="./CSS/all.min.css" />
     <!-- ^=======> Main Style sheet -->
     <link rel="stylesheet" href="./CSS/style.css" />
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="logo">
-        <img src="./Images/logo-shoply-white_png by Stefan Kuhl.jpeg" class="img-fluid rounded mx-auto d-block w-25" alt="...">
+      <img
+        src="./Images/logo-shoply-white_png by Stefan Kuhl.jpeg"
+        class="img-fluid rounded mx-auto d-block w-25"
+        alt="..."
+      />
     </div>
     <div class="w-75 mx-auto py-5">
-        <div class="form-floating mb-3">
-            <input type="text" class="form-control border-0 border-bottom rounded-0" id="productName" placeholder="name@example.com">
-            <label for="productName ">Product Name</label>
-        </div> 
-        <div class="form-floating mb-3">
-            <input type="number" class="form-control border-0 border-bottom rounded-0" id="ProductPrice" placeholder="name@example.com">
-            <label for="ProductPrice ">Product Price</label>
-        </div>
+      <div class="form-floating mb-3">
+        <input
+          type="text"
+          oninput="isValidProductName();"
+          class="form-control border-0 border-bottom rounded-0"
+          id="productName"
+          placeholder="name@example.com"
+        />
+        <label for="productName ">Product Name</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input
+          type="number"
+          class="form-control border-0 border-bottom rounded-0"
+          id="ProductPrice"
+          placeholder="name@example.com"
+        />
+        <label for="ProductPrice ">Product Price</label>
+      </div>
 
-        <div class="form-floating">
-            <select class="form-select border-0 border-bottom rounded-0" id="ProductCategory" aria-label="Floating label select example">
-              <option selected disabled hidden >Choose Product Category </option>
-              <option value="Mobile Phone">Mobile Phone</option>
-              <option value="Laptop">Laptop</option>
-              <option value="Camera">Camera</option>
-              <option value="Printer">Printer</option>
-              <option value="TV">TV</option>
- 
-            </select>
-            <label for="ProductCategory">Product Category</label>
-         </div>
+      <div class="form-floating">
+        <select
+          class="form-select border-0 border-bottom rounded-0"
+          id="ProductCategory"
+          aria-label="Floating label select example"
+        >
+          <option selected disabled hidden>Choose Product Category</option>
+          <option value="Mobile Phone">Mobile Phone</option>
+          <option value="Laptop">Laptop</option>
+          <option value="Camera">Camera</option>
+          <option value="Printer">Printer</option>
+          <option value="TV">TV</option>
+        </select>
+        <label for="ProductCategory">Product Category</label>
+      </div>
 
-         <div class="form-floating mb-3 mt-2">
-            <textarea class="form-control border-0 border-bottom rounded-0" id="ProductDescription" placeholder="name@example.com"></textarea>
-            <label for="ProductDescription ">Product Description</label>
-        </div>
+      <div class="form-floating mb-3 mt-2">
+        <textarea
+          class="form-control border-0 border-bottom rounded-0"
+          id="ProductDescription"
+          placeholder="name@example.com"
+        ></textarea>
+        <label for="ProductDescription ">Product Description</label>
+      </div>
 
-        <div class="form-floating mb-3">
-            <input type="file" class="form-control border-0 border-bottom rounded-0" id="ProductImage" placeholder="name@example.com">
-            <label for="ProductImage ">Product Image</label>
-        </div>
-        <button id="addProductBtn" onclick="addProduct()" type="button" class = "btn btn-info my-2 text-light d-block">Add Product </button>
-        <button id="updateProductBtn" onclick="updateProduct()" type="button" class = "btn btn-danger my-2 text-light d-none ">Update Product </button>
+      <div class="form-floating mb-3">
+        <input
+          type="file"
+          class="form-control border-0 border-bottom rounded-0"
+          id="ProductImage"
+          placeholder="name@example.com"
+        />
+        <label for="ProductImage ">Product Image</label>
+      </div>
+      <button
+        id="addProductBtn"
+        onclick="addProduct()"
+        type="button"
+        class="btn btn-info my-2 text-light d-block"
+      >
+        Add Product
+      </button>
+      <button
+        id="updateProductBtn"
+        onclick="updateProduct()"
+        type="button"
+        class="btn btn-danger my-2 text-light d-none"
+      >
+        Update Product
+      </button>
     </div>
 
+    <div class="container">
+      <input
+        oninput="searchForProduct(this.value);"
+        type="search"
+        class="my-3 border border-2 form-control"
+        placeholder="Search By Product Name"
+      />
 
-<div class="container">
-    <input oninput="searchForProduct(this.value);" type="search" class="my-3 border border-2 form-control" placeholder="Search By Product Name" />
-
-    <div id="productsContainerElement" class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
+      <div
+        id="productsContainerElement"
+        class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5"
+      >
         <!--Products Display using Javascript-->
+      </div>
     </div>
-</div>
 
-    
     <script src="./JS/bootstrap.bundle.min.js"></script>
     <!-- ^=======> Font awesome library -->
-    <script src="https://kit.fontawesome.com/ce3048c406.js" crossorigin="anonymous"></script>
+    <script
+      src="https://kit.fontawesome.com/ce3048c406.js"
+      crossorigin="anonymous"
+    ></script>
     <script src="./JS/index.js"></script>
-</body>
-
+  </body>
 </html>
