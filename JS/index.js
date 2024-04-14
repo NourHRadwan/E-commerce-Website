@@ -4,13 +4,14 @@ var productPriceInput = document.getElementById("ProductPrice");
 var productCategoryInput = document.getElementById("ProductCategory");
 var productDescriptionInput = document.getElementById("ProductDescription");
 var productImageInput = document.getElementById("ProductImage");
+
 // main buttons of the form
 var addProductBtn = document.getElementById("addProductBtn");
 var updateProductBtn = document.getElementById( "updateProductBtn");
 
 // displaying the products 
 var productsContainerElement = document.getElementById("productsContainerElement")
-var productList;
+var productList; // to keep track of the products
 
 var updateProductIndex; //  to keep track of which product is being updated
 
@@ -34,6 +35,8 @@ function addToLocalStore() {
 
 //  Adding new Products to the list
 function addProduct() {
+   if (isValidProductName()) // if the product name is valid, create the product
+   {
     var product = {
         productName: productNameInput.value,
         productPrice: productPriceInput.value,
@@ -46,6 +49,12 @@ function addProduct() {
     addToLocalStore();
     //reset the form fields 
     restProductInputs();
+    }
+    else
+    {
+        Swal.fire("Enter a Valid Product Name") // if the product name is not valid, display an error message
+    }
+
 }
 
 // Resting the form after adding or updating a product
@@ -146,12 +155,14 @@ function isValidProductName()
     //Check if name match the pattern
     if(ProductNameRegex.test(productNameInput.value) == true)
     {
-        productNameInput.classList.add("is-valid");
-        productNameInput.classList.remove("is-invalid");
+        productNameInput.classList.add("is-valid"); // if the name is valid, add the valid class to the input
+        productNameInput.classList.remove("is-invalid"); // remove the invalid class if the name is valid
+        return true; // return true if the name is valid
     }
-    else
+    else  // if the name doesn't match the pattern or the input is empty
     {
-        productNameInput.classList.add("is-invalid");
-        productNameInput.classList.remove("is-valid");
+        productNameInput.classList.add("is-invalid");  //  if the name is invalid, add the invalid class to the input
+        productNameInput.classList.remove("is-valid"); // remove the valid class if the name is invalid
+        return false;   // return false if the name is invalid
     }
 }
