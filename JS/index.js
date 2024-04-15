@@ -7,7 +7,7 @@ var productImageInput = document.getElementById("ProductImage");
 
 // main buttons of the form
 var addProductBtn = document.getElementById("addProductBtn");
-var updateProductBtn = document.getElementById( "updateProductBtn");
+var updateProductBtn = document.getElementById("updateProductBtn");
 
 // displaying the products 
 var productsContainerElement = document.getElementById("productsContainerElement")
@@ -35,23 +35,26 @@ function addToLocalStore() {
 
 //  Adding new Products to the list
 function addProduct() {
-   if (isValidProductField(ProductNameRegex, productNameInput) && isValidProductField(productPriceRegEx , productPriceInput)) // if the product name & price is valid, create the product
-   {
-    var product = {
-        productName: productNameInput.value,
-        productPrice: productPriceInput.value,
-        productCategory: productCategoryInput.value,
-        productDescription: productDescriptionInput.value,
-        productImage: productImageInput.files[0].name,
-    }
-    productList.push(product);
-    displayProducts(productList);
-    addToLocalStore();
-    //reset the form fields 
-    restProductInputs();
-    }
-    else
+    if (isValidProductField(ProductNameRegex, productNameInput)
+     && isValidProductField(productPriceRegEx, productPriceInput)
+     && isValidProductField(productCategoryRegEx, productCategoryInput)
+     && isValidProductField(productDescriptionRegEx, productDescriptionInput)
+     && productCategoryInput.value != "Choose Product Category") // if the product input is valid, create the product
     {
+        var product = {
+            productName: productNameInput.value,
+            productPrice: productPriceInput.value,
+            productCategory: productCategoryInput.value,
+            productDescription: productDescriptionInput.value,
+            productImage: productImageInput.files[0].name,
+        }
+        productList.push(product);
+        displayProducts(productList);
+        addToLocalStore();
+        //reset the form fields 
+        restProductInputs();
+    }
+    else {
         Swal.fire("Enter a Valid Product Detalies") // if the product name / price is not valid, display an error message
     }
 
@@ -110,22 +113,21 @@ function searchForProduct(term) {
 }
 
 // Part 1 in updating process ==> loading the data from the array to  the HTML page using the function "uploadProductDataToForm"
-function uploadProductDataToForm(index)
-{
+function uploadProductDataToForm(index) {
     //loading the value  of each field in the form with data from the selected item on the list
     productNameInput.value = productList[index].productName;
     productPriceInput.value = productList[index].productPrice;
     productCategoryInput.value = productList[index].productCategory;
     productDescriptionInput.value = productList[index].productDescription;
-   
-   // Switching between the two buttons based on the process ==>  removing Add btn and displaying update Product
-    addProductBtn.classList.replace("d-block" , "d-none");
-    updateProductBtn.classList.replace("d-none", "d-block") ;
+
+    // Switching between the two buttons based on the process ==>  removing Add btn and displaying update Product
+    addProductBtn.classList.replace("d-block", "d-none");
+    updateProductBtn.classList.replace("d-none", "d-block");
     updateProductIndex = index; //  saving the index of the selected item to use it in updateProduct function
 }
 
 // Part 2 in updating process ==> Saving the changes made by the user into the array
-function updateProduct(){
+function updateProduct() {
     // Saving the changes to product List array
     productList[updateProductIndex].productName = productNameInput.value;
     productList[updateProductIndex].productPrice = productPriceInput.value;
@@ -136,8 +138,8 @@ function updateProduct(){
     {
         productList[updateProductIndex].productImage = productImageInput.files[0].name;
     }
-    else {     
-    //if the user doesn't select a new file (productImageInput.files[0] is undefined), assign the existing image value back to the productImage property of the updated product.
+    else {
+        //if the user doesn't select a new file (productImageInput.files[0] is undefined), assign the existing image value back to the productImage property of the updated product.
         productList[updateProductIndex].productImage = productList[updateProductIndex].productImage;
     }
     addToLocalStore(); // Update the local storage with the modified list
@@ -150,13 +152,12 @@ function updateProduct(){
 
 var ProductNameRegex = /^[A-Z].+$/; //Name should start with capital letter
 var productPriceRegEx = /^\d+$/; //price should be only positive value
-
+var productCategoryRegEx = /^.+$/ ; //Category should not be empty
+var productDescriptionRegEx = /^.+$/; //Description should not be empty
 
 // Function to validate the product detalis
-function isValidProductField(regEx, element)
-{
-    if(regEx.test(element.value) == true)
-    {
+function isValidProductField(regEx, element) {
+    if (regEx.test(element.value) == true) {
         element.classList.add("is-valid"); // if the input is valid, add the valid class to the input
         element.classList.remove("is-invalid"); // remove the invalid class if the input is valid
         return true; // return true if the input is valid
