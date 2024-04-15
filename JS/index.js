@@ -35,7 +35,7 @@ function addToLocalStore() {
 
 //  Adding new Products to the list
 function addProduct() {
-   if (isValidProductName()) // if the product name is valid, create the product
+   if (isValidProductName() && isValidProductPrice()) // if the product name & price is valid, create the product
    {
     var product = {
         productName: productNameInput.value,
@@ -52,7 +52,7 @@ function addProduct() {
     }
     else
     {
-        Swal.fire("Enter a Valid Product Name") // if the product name is not valid, display an error message
+        Swal.fire("Enter a Valid Product Detalies") // if the product name / price is not valid, display an error message
     }
 
 }
@@ -165,4 +165,22 @@ function isValidProductName()
         productNameInput.classList.remove("is-valid"); // remove the valid class if the name is invalid
         return false;   // return false if the name is invalid
     }
+}
+
+
+function isValidProductPrice()
+{
+    var productPriceRegEx = /^\d+$/;
+    if(productPriceRegEx.test(productPriceInput.value) == true)
+    {
+        productPriceInput.classList.add("is-valid");
+        productPriceInput.classList.remove("is-invalid");
+        return true;
+    }
+    else
+    {
+        productPriceInput.classList.add("is-invalid");
+        productPriceInput.classList.remove("is-valid");
+        return false;
+    };
 }
