@@ -34,16 +34,16 @@
       <div class="form-floating mb-3">
         <input
           type="text"
-          oninput="isValidProductName();"
+          oninput="isValidProductField(ProductNameRegex, this);"
           class="form-control border-0 border-bottom rounded-0"
           id="productName"
           placeholder="name@example.com"
         />
         <label for="productName ">Product Name</label>
       </div>
-      <div class="form-floating mb-3">
+      <div class="form-floating mb-3"> 
         <input
-          oninput="isValidProductPrice();"
+          oninput="isValidProductField(productPriceRegEx, this);"
           type="number"
           class="form-control border-0 border-bottom rounded-0"
           id="ProductPrice"

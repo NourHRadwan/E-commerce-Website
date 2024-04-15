@@ -35,7 +35,7 @@ function addToLocalStore() {
 
 //  Adding new Products to the list
 function addProduct() {
-   if (isValidProductName() && isValidProductPrice()) // if the product name & price is valid, create the product
+   if (isValidProductField(ProductNameRegex, productNameInput) && isValidProductField(productPriceRegEx , productPriceInput)) // if the product name & price is valid, create the product
    {
     var product = {
         productName: productNameInput.value,
@@ -148,39 +148,25 @@ function updateProduct(){
     updateProductBtn.classList.replace("d-block", "d-none");
 }
 
-// Function to validate the product name
-function isValidProductName()
+var ProductNameRegex = /^[A-Z].+$/; //Name should start with capital letter
+var productPriceRegEx = /^\d+$/; //price should be only positive value
+
+
+// Function to validate the product detalis
+function isValidProductField(regEx, element)
 {
-    var ProductNameRegex = /^[A-Z].+$/; //Name should start with capital letter
-    //Check if name match the pattern
-    if(ProductNameRegex.test(productNameInput.value) == true)
+    if(regEx.test(element.value) == true)
     {
-        productNameInput.classList.add("is-valid"); // if the name is valid, add the valid class to the input
-        productNameInput.classList.remove("is-invalid"); // remove the invalid class if the name is valid
-        return true; // return true if the name is valid
+        element.classList.add("is-valid"); // if the input is valid, add the valid class to the input
+        element.classList.remove("is-invalid"); // remove the invalid class if the input is valid
+        return true; // return true if the input is valid
     }
-    else  // if the name doesn't match the pattern or the input is empty
+    else // if the input doesn't
     {
-        productNameInput.classList.add("is-invalid");  //  if the name is invalid, add the invalid class to the input
-        productNameInput.classList.remove("is-valid"); // remove the valid class if the name is invalid
+        element.classList.add("is-invalid");  //  if the name is invalid, add the invalid class to the input
+        element.classList.remove("is-valid"); // remove the valid class if the name is invalid
         return false;   // return false if the name is invalid
+
     }
 }
 
-
-function isValidProductPrice()
-{
-    var productPriceRegEx = /^\d+$/;
-    if(productPriceRegEx.test(productPriceInput.value) == true)
-    {
-        productPriceInput.classList.add("is-valid");
-        productPriceInput.classList.remove("is-invalid");
-        return true;
-    }
-    else
-    {
-        productPriceInput.classList.add("is-invalid");
-        productPriceInput.classList.remove("is-valid");
-        return false;
-    };
-}
