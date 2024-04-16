@@ -64,6 +64,7 @@
           class="form-select border-0 border-bottom rounded-0"
           id="ProductCategory"
           aria-label="Floating label select example"
+          onchange="isValidProductField(productCategoryRegEx,this)"
         >
           <option selected disabled hidden>Choose Product Category</option>
           <option value="Mobile Phone">Mobile Phone</option>
@@ -81,8 +82,11 @@
           class="form-control border-0 border-bottom rounded-0"
           id="ProductDescription"
           placeholder="name@example.com"
+          oninput="isValidProductField(productDescriptionRegEx,this)"
         ></textarea>
-        <p class="text-danger d-none pt-2">Product Description must be at least 5 characters</p>
+        <p class="text-danger d-none pt-2">
+          Product Description must be at least 3 characters
+        </p>
 
         <label for="ProductDescription ">Product Description</label>
       </div>

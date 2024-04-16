@@ -36,11 +36,10 @@ function addToLocalStore() {
 //  Adding new Products to the list
 function addProduct() {
     if (isValidProductField(ProductNameRegex, productNameInput)
-     && isValidProductField(productPriceRegEx, productPriceInput)
-     && isValidProductField(productCategoryRegEx, productCategoryInput)
-     && isValidProductField(productDescriptionRegEx, productDescriptionInput)
-     && productCategoryInput.value != "Choose Product Category") // if the product input is valid, create the product
-    {
+        && isValidProductField(productPriceRegEx, productPriceInput)
+        && isValidProductField(productCategoryRegEx, productCategoryInput)
+        && isValidProductField(productDescriptionRegEx, productDescriptionInput)
+        && isValidProductImage()) {
         var product = {
             productName: productNameInput.value,
             productPrice: productPriceInput.value,
@@ -63,10 +62,15 @@ function addProduct() {
 // Resting the form after adding or updating a product
 function restProductInputs() {
     productNameInput.value = null;
+    productNameInput.classList.remove("is-valid")
     productPriceInput.value = null;
+    productPriceInput.classList.remove("is-valid")
     productCategoryInput.value = null;
+    productCategoryInput.classList.remove("is-valid")
     productDescriptionInput.value = null;
+    productDescriptionInput.classList.remove("is-valid")
     productImageInput.value = null;
+
 }
 
 //passing DisplayList as argument for the displayProduct function to controll which list should be displayed (filter or full list)
@@ -152,8 +156,8 @@ function updateProduct() {
 
 var ProductNameRegex = /^[A-Z].+$/; //Name should start with capital letter
 var productPriceRegEx = /^\d+$/; //price should be only positive value
-var productCategoryRegEx = /^.+$/ ; //Category should not be empty
-var productDescriptionRegEx = /^.+$/; //Description should not be empty
+var productCategoryRegEx = /^Mobile Phone| Laptop|Camera|Printer|TV/; //Category should not be empty
+var productDescriptionRegEx = /^.{3,}$/; //Description should not be empty
 
 // Function to validate the product detalis
 function isValidProductField(regEx, element) {
@@ -173,3 +177,13 @@ function isValidProductField(regEx, element) {
     }
 }
 
+function isValidProductImage() {
+    if (productImageInput.files.length != 0) {
+        productImageInput.nextElementSibling.classList.replace("d-block", "d-none")
+        return true;
+    }
+    else {
+        productImageInput.nextElementSibling.classList.replace("d-none", "d-block")
+        return false;
+    }
+}
