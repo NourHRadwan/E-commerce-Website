@@ -133,25 +133,36 @@ function uploadProductDataToForm(index) {
 // Part 2 in updating process ==> Saving the changes made by the user into the array
 function updateProduct() {
     // Saving the changes to product List array
-    productList[updateProductIndex].productName = productNameInput.value;
-    productList[updateProductIndex].productPrice = productPriceInput.value;
-    productList[updateProductIndex].productCategory = productCategoryInput.value;
-    productList[updateProductIndex].productDescription = productDescriptionInput.value;
+    if (isValidProductField(ProductNameRegex, productNameInput)
+        && isValidProductField(productPriceRegEx, productPriceInput)
+        && isValidProductField(productCategoryRegEx, productCategoryInput)
+        && isValidProductField(productDescriptionRegEx, productDescriptionInput)
+        && isValidProductImage()) {
+        productList[updateProductIndex].productName = productNameInput.value;
+        productList[updateProductIndex].productPrice = productPriceInput.value;
+        productList[updateProductIndex].productCategory = productCategoryInput.value;
+        productList[updateProductIndex].productDescription = productDescriptionInput.value;
 
-    if (productImageInput.files[0] != undefined) //Check if a new file is selected
-    {
-        productList[updateProductIndex].productImage = productImageInput.files[0].name;
+        if (productImageInput.files[0] != undefined) //Check if a new file is selected
+        {
+            productList[updateProductIndex].productImage = productImageInput.files[0].name;
+        }
+        else {
+            //if the user doesn't select a new file (productImageInput.files[0] is undefined), assign the existing image value back to the productImage property of the updated product.
+            productList[updateProductIndex].productImage = productList[updateProductIndex].productImage;
+        }
+
+
+        addToLocalStore(); // Update the local storage with the modified list
+        displayProducts(productList); // Display the updated list
+        restProductInputs(); // Reset the form fields
+        // Switching back to the Add button after updating
+        addProductBtn.classList.replace("d-none", "d-block");
+        updateProductBtn.classList.replace("d-block", "d-none");
     }
     else {
-        //if the user doesn't select a new file (productImageInput.files[0] is undefined), assign the existing image value back to the productImage property of the updated product.
-        productList[updateProductIndex].productImage = productList[updateProductIndex].productImage;
+        Swal.fire("Please fill the form correctly");
     }
-    addToLocalStore(); // Update the local storage with the modified list
-    displayProducts(productList); // Display the updated list
-    restProductInputs(); // Reset the form fields
-    // Switching back to the Add button after updating
-    addProductBtn.classList.replace("d-none", "d-block");
-    updateProductBtn.classList.replace("d-block", "d-none");
 }
 
 var ProductNameRegex = /^[A-Z].+$/; //Name should start with capital letter
