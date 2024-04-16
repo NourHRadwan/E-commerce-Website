@@ -39,9 +39,13 @@
           id="productName"
           placeholder="name@example.com"
         />
+        <p class="text-danger d-none pt-2">
+          Product name must start with a capital letter followed by at least one
+          small letter.
+        </p>
         <label for="productName ">Product Name</label>
       </div>
-      <div class="form-floating mb-3"> 
+      <div class="form-floating mb-3">
         <input
           oninput="isValidProductField(productPriceRegEx, this);"
           type="number"
@@ -49,7 +53,10 @@
           id="ProductPrice"
           placeholder="name@example.com"
         />
-        <label for="ProductPrice ">Product Price</label>
+        <p class="text-danger d-none pt-2">
+          product price must be a number and greater than 0.
+        </p>
+        <label for="ProductPrice">Product Price</label>
       </div>
 
       <div class="form-floating">
@@ -65,6 +72,7 @@
           <option value="Printer">Printer</option>
           <option value="TV">TV</option>
         </select>
+        <p class="text-danger d-none pt-2">Please Choose Product Category</p>
         <label for="ProductCategory">Product Category</label>
       </div>
 
@@ -74,6 +82,8 @@
           id="ProductDescription"
           placeholder="name@example.com"
         ></textarea>
+        <p class="text-danger d-none pt-2">Product Description must be at least 5 characters</p>
+
         <label for="ProductDescription ">Product Description</label>
       </div>
 
@@ -84,6 +94,8 @@
           id="ProductImage"
           placeholder="name@example.com"
         />
+        <p class="text-danger d-none pt-2">Please Choose Product Image</p>
+
         <label for="ProductImage ">Product Image</label>
       </div>
       <button
@@ -127,8 +139,7 @@
       crossorigin="anonymous"
     ></script>
     <script src="./JS/index.js"></script>
-     <!-- ^=======> Sweet Alert library -->
+    <!-- ^=======> Sweet Alert library -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
   </body>
 </html>

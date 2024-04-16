@@ -160,12 +160,14 @@ function isValidProductField(regEx, element) {
     if (regEx.test(element.value) == true) {
         element.classList.add("is-valid"); // if the input is valid, add the valid class to the input
         element.classList.remove("is-invalid"); // remove the invalid class if the input is valid
+        element.nextElementSibling.classList.replace("d-block", "d-none") //Hide the element error msg
         return true; // return true if the input is valid
     }
     else // if the input doesn't
     {
         element.classList.add("is-invalid");  //  if the name is invalid, add the invalid class to the input
         element.classList.remove("is-valid"); // remove the valid class if the name is invalid
+        element.nextElementSibling.classList.replace("d-none", "d-block") // Show the error msg 
         return false;   // return false if the name is invalid
 
     }
