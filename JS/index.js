@@ -36,10 +36,10 @@ function addToLocalStore() {
 //  Adding new Products to the list
 function addProduct() {
     if (isValidProductField(ProductNameRegex, productNameInput)
-        && isValidProductField(productPriceRegEx, productPriceInput)
-        && isValidProductField(productCategoryRegEx, productCategoryInput)
-        && isValidProductField(productDescriptionRegEx, productDescriptionInput)
-        && isValidProductImage()) {
+        & isValidProductField(productPriceRegEx, productPriceInput)
+        & isValidProductField(productCategoryRegEx, productCategoryInput)
+        & isValidProductField(productDescriptionRegEx, productDescriptionInput)
+        & isValidProductImage()) {
         var product = {
             productName: productNameInput.value,
             productPrice: productPriceInput.value,
@@ -134,10 +134,10 @@ function uploadProductDataToForm(index) {
 function updateProduct() {
     // Saving the changes to product List array
     if (isValidProductField(ProductNameRegex, productNameInput)
-        && isValidProductField(productPriceRegEx, productPriceInput)
-        && isValidProductField(productCategoryRegEx, productCategoryInput)
-        && isValidProductField(productDescriptionRegEx, productDescriptionInput)
-        && isValidProductImage()) {
+        & isValidProductField(productPriceRegEx, productPriceInput)
+        & isValidProductField(productCategoryRegEx, productCategoryInput)
+        & isValidProductField(productDescriptionRegEx, productDescriptionInput)
+        & isValidProductImage()) {
         productList[updateProductIndex].productName = productNameInput.value;
         productList[updateProductIndex].productPrice = productPriceInput.value;
         productList[updateProductIndex].productCategory = productCategoryInput.value;
